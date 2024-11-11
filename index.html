@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #2b393e;
+        }
+        .btnn {
+            color: rgb(25, 0, 255);
+            border: none;
+            padding: 25px 100px;
+            text-align: center;
+            font-size: 30px;
+            cursor: pointer;
+            margin: 5px;
+            border: rgb(93, 51, 51) 10px solid;
+            border-radius: 50px;
+            background-color: rgb(107, 140, 170);
+        }
+        .image-button {
+            background-image: url('ICON.jpg');
+            background-size: cover;
+            width: 100px;
+            height: 100px;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            border: gray 10px solid;
+            border-radius: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <br>
+        <label id="counter" class="btnn">0</label>
+        <br><br>
+        <button class="image-button" onclick="increment()">Click Me</button>
+    </center>
+
+    <script>
+        function increment() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "process_click.php", true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById("counter").textContent = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
